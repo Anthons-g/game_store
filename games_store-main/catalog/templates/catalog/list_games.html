@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Games catalog</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Games catalog</h1>
+    <div class="content-container">
+        <form id="filter-form" method="get" action="{% url 'filter_games' %}">
+            <label for="search">Search game by name:</label>
+            <input type="text" id="search" name="search" placeholder="Enter game name" value="{{ request.GET.search }}">
+            <div>
+                <label for="platform">Platform:</label>
+                <input type="text" id="platform" name="platform" value="{{ request.GET.platform }}">
+             
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre" value="{{ request.GET.genre }}">
+            </div>
+            <div>
+                <label for="min_price">Minimum price:</label>
+                <input type="number" id="min_price" name="min_price" step="0.01" placeholder="0.00" value="{{ request.GET.min_price }}">
+            
+                <label for="max_price">Maximum price:</label>
+                <input type="number" id="max_price" name="max_price" step="0.01" placeholder="0.00" value="{{ request.GET.max_price }}">
+            </div>
+            <label for="order_by_price">Order by price:</label>
+            <select id="order_by_price" name="order_by_price">
+                <option value="">-- Select order --</option>
+                <option value="asc" {% if request.GET.order_by_price == 'asc' %}selected{% endif %}>Price: Low to High</option>
+                <option value="desc" {% if request.GET.order_by_price == 'desc' %}selected{% endif %}>Price: High to Low</option>
+            </select>
+            
+            <button type="submit">Filter</button>
+        </form>
+        
+        <ul id="games-list">
+            {% for game in games %}
+            <li>
+                <a href="#" class="game-detail-link" data-game-id="{{ game.id }}">
+                    <img src="{{ game.image.url }}" alt="{{ game.name }}">
+                    <h2>{{ game.name }}</h2>
+                    <p>{{ game.genre }}</p>
+                    <p>{{ game.platform }}</p>
+                    <p>{{ game.price }} $</p>
+                </a>
+            </li>
+            {% empty %}
+            <p>No games found.</p>
+            {% endfor %}
+        </ul>
+
+        <div id="game-details-modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="game-image" src="" alt="">
+                <h2 id="game-name"></h2>
+                <p id="game-description"></p>
+                <p><strong>Release Date:</strong> <span id="game-release-date"></span></p>
+                <p><strong>Reviews:</strong></p>
+                <p id="game-reviews"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

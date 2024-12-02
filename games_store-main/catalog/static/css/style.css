@@ -1,0 +1,236 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #8EA5C7, #455061); 
+    margin: 0;
+    padding: 0;
+    padding-bottom: 4cm; /*ESTO LO CAMBIAS DEPENDIENDO DE COMO SE VEA LA PAG*/
+  
+}
+
+.game-title {
+    font-family: 'Arial', sans-serif; /* Usa una fuente moderna */
+    font-size: 2.5rem; /* Tamaño de fuente grande */
+    text-align: center; /* Centra el título */
+    color: #ffcc00; /* Color amarillo para destacar */
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5); /* Sombra del texto para efecto 3D */
+    margin: 20px 0; /* Margen superior e inferior */
+    -webkit-text-fill-color: transparent; /* Relleno transparente para el texto */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas */
+}
+
+
+
+ul#games-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+ul#games-list li {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    transition: transform 0.2s;
+}
+li {
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    display: inline-block;
+}
+ul#games-list li:hover {
+    transform: scale(1.02);
+}
+ul#games-list h2 {
+    font-size: 1.5em;
+    margin: 10px;
+}
+ul#games-list p {
+    margin: 5px 10px;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#game-details-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80%;
+    position: relative;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#game-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.content-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+    justify-content: space-between; /* Espacio entre los elementos */
+    border: 2px solid #bacbf0; /* Bordes del contenedor */
+    border-radius: 5px; /* Esquinas redondeadas */
+    padding: 20px; /* Espaciado interior */
+    width: 80%; /* Ajusta el ancho a un 80% del contenedor padre */
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 20px auto; /* Centrando el contenedor en la página */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del cuadro */
+}
+
+
+.form-row {
+    flex: 1 1 30%; /* Cada fila ocupará el 30% del ancho, permitiendo 3 por fila */
+    margin: 15px; /* Espacio entre cada fila */
+}
+label {
+    font-weight: bold;
+    color: #555;
+}
+.form-row label {
+    display: block; /* Asegurarse de que la etiqueta ocupe una línea completa */
+    margin-bottom: 5px; /* Espacio entre label y input */
+    color: #333; /* Color del texto del label */
+    font-size: 14px; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+.form-row input,
+.form-row select {
+    width: 100%; /* Hacer que el input y el select ocupen todo el ancho del contenedor */
+    border: 1px solid #ccc; /* Bordes del input */
+    border-radius: 3px; /* Esquinas redondeadas del input */
+    padding: 8px; /* Espaciado interior del input */
+    font-size: 16px; /* Tamaño de fuente del input */
+}
+
+#search{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+h1 {
+    text-align: center; /* Centrar el texto horizontalmente */
+    margin-top: 20px; /* Espaciado superior, ajusta según tus necesidades */
+    margin-bottom: 20px; /* Espaciado inferior, ajusta según tus necesidades */
+}
+#game-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+#filter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    margin: 20px; /* Espaciado opcional */
+}
+#filter-form input,
+#filter-form select {
+    margin-bottom: 16px; /* Espacio vertical debajo de los inputs y selects */
+}
